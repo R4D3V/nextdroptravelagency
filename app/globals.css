@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+:root {
+  /* Base neumorphic surface */
+  --base: #e9edf3;
+  --base-light: #ffffff;
+  --base-dark: #c8d0db;
+
+  /* Text */
+  --ink: #1f2937;
+  --ink-soft: #5b6472;
+  --ink-faint: #8993a1;
+
+  /* Brand */
+  --brand-blue: #3f7fb3;
+  --brand-blue-deep: #2d5f8a;
+  --brand-red: #d6533f;
+  --brand-red-deep: #b8412f;
+  --accent-amber: #c98a3e;
+  --accent-green: #4f9d6e;
+
+  /* Shadow components (light source: top-left) */
+  --shadow-light: #ffffff;
+  --shadow-dark: #b7c0cd;
+}
+
+@theme inline {
+  --color-base: var(--base);
+  --color-base-light: var(--base-light);
+  --color-base-dark: var(--base-dark);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-deep: var(--brand-blue-deep);
+  --color-brand-red: var(--brand-red);
+  --color-brand-red-deep: var(--brand-red-deep);
+  --color-accent-amber: var(--accent-amber);
+  --color-accent-green: var(--accent-green);
+
+  --font-display: "Poppins", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+}
+
+body {
+  background: var(--base);
+  color: var(--ink);
+}
+
+/* ---------- Neumorphic primitives ---------- */
+
+.neu-raised {
+  background: var(--base);
+  border-radius: 1.5rem;
+  box-shadow:
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+}
+
+.neu-raised-sm {
+  background: var(--base);
+  border-radius: 1rem;
+  box-shadow:
+    5px 5px 10px var(--shadow-dark),
+    -5px -5px 10px var(--shadow-light);
+}
+
+.neu-inset {
+  background: var(--base);
+  border-radius: 1.25rem;
+  box-shadow:
+    inset 6px 6px 12px var(--shadow-dark),
+    inset -6px -6px 12px var(--shadow-light);
+}
+
+.neu-flat {
+  background: var(--base);
+  box-shadow:
+    4px 4px 8px var(--shadow-dark),
+    -4px -4px 8px var(--shadow-light);
+}
+
+.neu-dial {
+  background: var(--base);
+  border-radius: 9999px;
+  box-shadow:
+    10px 10px 20px var(--shadow-dark),
+    -10px -10px 20px var(--shadow-light);
+}
+
+.neu-dial-inset {
+  background: var(--base);
+  border-radius: 9999px;
+  box-shadow:
+    inset 5px 5px 10px var(--shadow-dark),
+    inset -5px -5px 10px var(--shadow-light);
+}
+
+.neu-press {
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+.neu-press:active {
+  box-shadow:
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+  transform: translateY(1px);
+}
+
+.brand-bar {
+  height: 4px;
+  width: 2.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-red) 100%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 700ms ease, transform 700ms ease;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-26px);
+    transition: opacity 750ms ease, transform 750ms ease;
+  }
+  .reveal-left.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(26px);
+    transition: opacity 750ms ease, transform 750ms ease;
+  }
+  .reveal-right.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.93);
+    transition: opacity 650ms ease, transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-scale.in-view {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-blue-deep);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
