@@ -7,6 +7,8 @@ const SITE_LINKS = [
   { label: "Destinations", href: "/destinations" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Why Us", href: "/why-us" },
+  { label: "About", href: "/about" },
+  { label: "Gallery", href: "/gallery" },
 ];
 
 export default function Footer() {

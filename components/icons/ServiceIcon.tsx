@@ -53,6 +53,15 @@ export function ServiceIcon({
           <path d="M12 13v7.5" stroke={color} strokeWidth="1.6" />
         </svg>
       );
+    case "passport":
+      return (
+        <svg {...common}>
+          <rect x="5" y="3" width="14" height="18" rx="1.6" stroke={color} strokeWidth="1.6" />
+          <circle cx="12" cy="10.5" r="2.6" stroke={color} strokeWidth="1.6" />
+          <path d="M9 15.5c.7-1 1.7-1.5 3-1.5s2.3.5 3 1.5" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
+          <path d="M8 6.5h8" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+        </svg>
+      );
     default:
       return null;
   }

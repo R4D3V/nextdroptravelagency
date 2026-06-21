@@ -5,7 +5,7 @@ export type ServiceDetail = {
   tagline: string;
   color: string;
   colorVar: string;
-  icon: "visa" | "hotel" | "ticket" | "cargo";
+  icon: "visa" | "hotel" | "ticket" | "cargo" | "passport";
   summary: string;
   description: string[];
   highlights: { title: string; desc: string }[];
@@ -249,6 +249,65 @@ export const SERVICES: ServiceDetail[] = [
       { value: "20+", label: "Cargo routes" },
       { value: "100%", label: "Shipments tracked" },
       { value: "24/7", label: "Drop-off support line" },
+    ],
+  },
+  {
+    slug: "passport",
+    title: "Passport Services",
+    shortTitle: "Passport",
+    tagline: "Every passport situation, sorted",
+    color: "var(--brand-blue-deep)",
+    colorVar: "--brand-blue-deep",
+    icon: "passport",
+    summary:
+      "New, child, renewal, lost or damaged — we handle every type of Ugandan passport appointment and application from start to finish.",
+    description: [
+      "A passport problem can hold up an entire trip, whether it's a first-time application, a child's passport, a damaged booklet, or a name that no longer matches your other documents. Our passport desk handles all of it under one roof.",
+      "We book your appointment slot, walk you through the exact documents the Directorate of Citizenship and Immigration Control requires for your specific case, and check everything before submission so there's no back-and-forth at the counter.",
+      "If your passport is lost, stolen or damaged, we help you file the right reports and move the replacement process along as quickly as the system allows, so you're not stuck waiting without travel documents.",
+    ],
+    highlights: [
+      {
+        title: "New passport appointments",
+        desc: "First-time applications booked and prepared, with every supporting document checked beforehand.",
+      },
+      {
+        title: "Child passport appointments",
+        desc: "Guidance on parental consent, birth certificates and the extra requirements that come with applying for a minor.",
+      },
+      {
+        title: "Lost or damaged passport",
+        desc: "Help with the reporting process and replacement application when a passport is lost, stolen or damaged.",
+      },
+      {
+        title: "Name change & renewals",
+        desc: "Updating a changed name or renewing an expiring passport, handled as a straightforward, guided process.",
+      },
+    ],
+    process: [
+      { title: "Tell us your case", desc: "New passport, child passport, renewal, name change or loss — we confirm what applies to you." },
+      { title: "Document checklist", desc: "We give you the exact list of documents needed for your specific situation." },
+      { title: "Appointment & submission", desc: "We book your slot and prepare your application for submission." },
+      { title: "Collection", desc: "We track progress and let you know the moment your passport is ready for collection." },
+    ],
+    faqs: [
+      {
+        q: "What do I need for a child's passport appointment?",
+        a: "Typically the child's birth certificate, parents' national IDs or passports, and consent from both parents. We confirm the exact list for your case before your appointment.",
+      },
+      {
+        q: "My passport was lost — what's the first step?",
+        a: "We guide you through reporting the loss and then prepare a replacement application, so you can get a new passport issued as quickly as the process allows.",
+      },
+      {
+        q: "Can I change the name on my passport after marriage?",
+        a: "Yes, a name change application can be processed alongside a renewal or as a standalone update — we'll confirm which documents you need to support the change.",
+      },
+    ],
+    stats: [
+      { value: "6", label: "Passport services covered" },
+      { value: "1000+", label: "Applications assisted" },
+      { value: "24/7", label: "Appointment support" },
     ],
   },
 ];

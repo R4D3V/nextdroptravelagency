@@ -173,3 +173,133 @@ body {
   outline-offset: 3px;
   border-radius: 0.5rem;
 }
+
+/* ---------- Site-wide flying planes ---------- */
+/* Fixed decorative layer, rendered once in the root layout so it shows
+   on every route. Each <span class="plane-fly dir-*"> carries its own
+   --plane-op / --plane-tx / --plane-ty / --plane-rot via inline style,
+   which the shared keyframes below read — this lets 20+ planes share
+   4 keyframes while still moving/fading at slightly different rates. */
+
+.site-planes {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.plane-fly {
+  position: absolute;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dir-rl {
+    animation-name: fly-rl;
+  }
+  .dir-lr {
+    animation-name: fly-lr;
+  }
+  .dir-bt {
+    animation-name: fly-bt;
+  }
+  .dir-tb {
+    animation-name: fly-tb;
+  }
+
+  @keyframes fly-rl {
+    0% {
+      transform: translate(0, 0) rotate(var(--plane-rot, -8deg));
+      opacity: 0;
+    }
+    8% {
+      opacity: var(--plane-op, 0.45);
+    }
+    50% {
+      transform: translate(calc(var(--plane-tx, 60vw) * 0.5), calc(var(--plane-ty, -8vh) * 0.45))
+        rotate(calc(var(--plane-rot, -8deg) * 0.6));
+    }
+    92% {
+      opacity: var(--plane-op, 0.45);
+    }
+    100% {
+      transform: translate(var(--plane-tx, 60vw), var(--plane-ty, -8vh)) rotate(var(--plane-rot, -8deg));
+      opacity: 0;
+    }
+  }
+
+  @keyframes fly-lr {
+    0% {
+      transform: translate(0, 0) rotate(var(--plane-rot, 172deg));
+      opacity: 0;
+    }
+    8% {
+      opacity: var(--plane-op, 0.45);
+    }
+    50% {
+      transform: translate(calc(var(--plane-tx, -60vw) * 0.5), calc(var(--plane-ty, -8vh) * 0.45))
+        rotate(calc(var(--plane-rot, 172deg) * 1.02));
+    }
+    92% {
+      opacity: var(--plane-op, 0.45);
+    }
+    100% {
+      transform: translate(var(--plane-tx, -60vw), var(--plane-ty, -8vh)) rotate(var(--plane-rot, 172deg));
+      opacity: 0;
+    }
+  }
+
+  @keyframes fly-bt {
+    0% {
+      transform: translate(0, 0) rotate(var(--plane-rot, -100deg));
+      opacity: 0;
+    }
+    8% {
+      opacity: var(--plane-op, 0.4);
+    }
+    50% {
+      transform: translate(calc(var(--plane-tx, 8vw) * 0.5), calc(var(--plane-ty, -65vh) * 0.45))
+        rotate(calc(var(--plane-rot, -100deg) * 0.97));
+    }
+    92% {
+      opacity: var(--plane-op, 0.4);
+    }
+    100% {
+      transform: translate(var(--plane-tx, 8vw), var(--plane-ty, -65vh)) rotate(var(--plane-rot, -100deg));
+      opacity: 0;
+    }
+  }
+
+  @keyframes fly-tb {
+    0% {
+      transform: translate(0, 0) rotate(var(--plane-rot, 82deg));
+      opacity: 0;
+    }
+    8% {
+      opacity: var(--plane-op, 0.4);
+    }
+    50% {
+      transform: translate(calc(var(--plane-tx, -8vw) * 0.5), calc(var(--plane-ty, 65vh) * 0.45))
+        rotate(calc(var(--plane-rot, 82deg) * 1.03));
+    }
+    92% {
+      opacity: var(--plane-op, 0.4);
+    }
+    100% {
+      transform: translate(var(--plane-tx, -8vw), var(--plane-ty, 65vh)) rotate(var(--plane-rot, 82deg));
+      opacity: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plane-fly {
+    display: none;
+  }
+}
+
+

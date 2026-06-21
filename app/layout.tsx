@@ -7,6 +7,7 @@ import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
 import "./globals.css";
+import SitePlanes from "@/components/SitePlanes";
 
 export const metadata: Metadata = {
   title: "Next Drop Travel Agency | A Reason to Travel Every Season",
@@ -29,7 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-body antialiased">{children}</body>
+      <body className="font-body antialiased">
+        <SitePlanes />
+        {children}
+      </body>
     </html>
   );
 }
